@@ -163,7 +163,7 @@ const handleDotenvxError = (errorMsg, envDir) => {
 
     if (!hasEnvKeys && inWorktree) {
       console.error(`${LOG_PREFIX} This looks like a worktree missing .env.keys.`);
-      console.error(`${LOG_PREFIX} Run: node .claude/scripts/sync-worktree-env-keys.mjs`);
+      console.error(`${LOG_PREFIX} Run: node .codex/scripts/sync-worktree-env-keys.mjs`);
     } else if (!hasEnvKeys) {
       console.error(`${LOG_PREFIX} No .env.keys file found at ${envKeysPath}.`);
       console.error(`${LOG_PREFIX} Add .env.keys or re-encrypt envs with your own key.`);

@@ -50,7 +50,7 @@ This checklist documents all tests and checks that should be run after updating 
 
 ## 6. Code Quality Checks
 
-- [x] Run `node .claude/scripts/check-code-quality.mjs` - **All checks passed**
+- [x] Run `node .codex/scripts/check-code-quality.mjs` - **All checks passed**
 - [x] Verify all custom checks pass:
   - [x] Effect run promise checks
   - [x] Effect promise checks

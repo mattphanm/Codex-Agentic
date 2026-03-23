@@ -16,15 +16,15 @@ const DEFAULT_ALLOWLIST = [
   'LOG_LEVEL',
 ];
 
-// AC3.3: Pattern-based allowlist for CLAUDE_* and ANTHROPIC_* variables
-const PATTERN_ALLOWLIST = [/^CLAUDE_/, /^ANTHROPIC_/];
+// AC3.3: Pattern-based allowlist for Codex and OpenAI agent variables
+const PATTERN_ALLOWLIST = [/^CODEX_/, /^OPENAI_/];
 
 /**
  * Builds a minimal environment object for child processes.
  *
  * AC3.1: Exported function importable from both apps/ and cdk/
  * AC3.2: Includes default allowlist (PATH, HOME, USER, SHELL, TERM, NODE_ENV, LOG_LEVEL)
- * AC3.3: Includes all CLAUDE_* and ANTHROPIC_* variables
+ * AC3.3: Includes all CODEX_* and OPENAI_* variables
  * AC3.4: Accepts additional keys per-callsite
  * AC3.5: Logs warning when requested additional key is missing from process.env
  *
@@ -42,7 +42,7 @@ export function buildChildEnv(additionalKeys = []) {
     }
   }
 
-  // Include pattern-matched keys (CLAUDE_*, ANTHROPIC_*)
+  // Include pattern-matched keys (CODEX_*, OPENAI_*)
   for (const [key, value] of Object.entries(process.env)) {
     if (PATTERN_ALLOWLIST.some((p) => p.test(key)) && value !== undefined) {
       env[key] = value;

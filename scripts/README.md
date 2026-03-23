@@ -173,7 +173,7 @@ The `--auto-approve` flag skips interactive confirmation prompts. This is essent
 |-------------|---------------------|--------|
 | CI/CD pipelines | Yes | No TTY available for prompts |
 | Automated scripts | Yes | Cannot respond to interactive prompts |
-| Claude Code / AI agents | Yes | Non-interactive execution environment |
+| Codex / Codex / AI agents | Yes | Non-interactive execution environment |
 | Local development | Optional | Review prompts catch mistakes |
 | Production deployments | Recommended with `--dry-run` first | Preview before committing |
 

@@ -42,9 +42,9 @@
     "eject:analytics": "node scripts/eject-aspect.mjs analytics",
     "eject:users": "node scripts/eject-aspect.mjs users",
     "// -- 🤖 Agent Scripts": "--",
-    "format:markdown": "prettier --write \".claude/**/*.md\"",
+    "format:markdown": "prettier --write \".codex/**/*.md\"",
     "test:scripts": "node --test \"scripts/utils/__tests__/*.mjs\"",
-    "phase:check": "npm run lint:fix && node .claude/scripts/check-code-quality.mjs && npm run build && npm run test",
+    "phase:check": "npm run lint:fix && node .codex/scripts/check-code-quality.mjs && npm run build && npm run test",
     "agent:finalize": "npm run phase:check && npm run build:no-cache"
   }
 }

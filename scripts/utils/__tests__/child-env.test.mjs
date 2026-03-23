@@ -4,7 +4,7 @@
  * Tests verify that:
  * - buildChildEnv() returns only allowlisted vars (AC3.1)
  * - Default allowlist includes: PATH, HOME, USER, SHELL, TERM, NODE_ENV, LOG_LEVEL (AC3.2)
- * - CLAUDE_* and ANTHROPIC_* vars included via pattern matching (AC3.3)
+ * - CODEX_*, OPENAI_*, and OPENAI_* vars included via pattern matching (AC3.3)
  * - Additional keys parameter adds specific vars (AC3.4)
  * - Missing additional keys log a warning (AC3.5)
  * - Secrets not in allowlist are excluded (AWS_SECRET_ACCESS_KEY, etc.)
@@ -93,24 +93,24 @@ describe('AS-003: buildChildEnv()', () => {
     assert.equal(env.LOG_LEVEL, 'debug');
   });
 
-  test('AC3.3: CLAUDE_* and ANTHROPIC_* vars are automatically included', async () => {
+  test('AC3.3: CODEX_* and OPENAI_* vars are automatically included', async () => {
     // Arrange
-    process.env.CLAUDE_API_KEY = 'claude-key-123';
-    process.env.CLAUDE_MODEL = 'opus';
-    process.env.ANTHROPIC_API_KEY = 'anthropic-key-456';
-    process.env.ANTHROPIC_BASE_URL = 'https://api.anthropic.com';
-    process.env.NOT_CLAUDE_VAR = 'should-not-be-included';
+    process.env.CODEX_API_KEY = 'codex-key-123';
+    process.env.CODEX_MODEL = 'opus';
+    process.env.OPENAI_API_KEY = 'openai-key-789';
+    process.env.OPENAI_BASE_URL = 'https://api.openai.com/v1';
+    process.env.NOT_CODEX_VAR = 'should-not-be-included';
 
     // Act
     const { buildChildEnv } = await import('../child-env.mjs');
     const env = buildChildEnv();
 
     // Assert
-    assert.equal(env.CLAUDE_API_KEY, 'claude-key-123');
-    assert.equal(env.CLAUDE_MODEL, 'opus');
-    assert.equal(env.ANTHROPIC_API_KEY, 'anthropic-key-456');
-    assert.equal(env.ANTHROPIC_BASE_URL, 'https://api.anthropic.com');
-    assert.equal(env.NOT_CLAUDE_VAR, undefined);
+    assert.equal(env.CODEX_API_KEY, 'codex-key-123');
+    assert.equal(env.CODEX_MODEL, 'opus');
+    assert.equal(env.OPENAI_API_KEY, 'openai-key-789');
+    assert.equal(env.OPENAI_BASE_URL, 'https://api.openai.com/v1');
+    assert.equal(env.NOT_CODEX_VAR, undefined);
   });
 
   test('AC3.4: Additional keys are merged into the allowlist', async () => {

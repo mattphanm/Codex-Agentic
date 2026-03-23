@@ -18,7 +18,7 @@ const workDir = resolve(
 const envFile = resolve(packageRootDir, `.env.${ENV}`);
 const dotenvxRunner = resolve(
   monorepoRootDir,
-  '.claude/scripts/dotenvx-run.mjs',
+  '.codex/scripts/dotenvx-run.mjs',
 );
 
 try {
