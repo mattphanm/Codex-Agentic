@@ -1,4 +1,4 @@
-# @matthewlin/monorepo
+# @matthewp/monorepo
 
 Opinionated TypeScript monorepo with an Express 5 backend, a Next 16 marketing site, EventBridge/DynamoDB analytics processing, and CDK for Terraform (CDKTF) infrastructure. Repo-native agent workflows and Memory Bank docs are part of the core tooling. WIP, not production-ready.
 
